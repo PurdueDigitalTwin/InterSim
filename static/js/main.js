@@ -34,10 +34,15 @@
     }
 
     if (!DEMO_VIDEO.mp4) return;
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var video = document.createElement("video");
     video.controls = true;
-    video.preload = "metadata";
+    video.preload = reduceMotion ? "metadata" : "auto";
     video.playsInline = true;
+    /* Muted so browsers allow autoplay (the clip has no audio); loops. Under reduced motion the viewer presses play. */
+    video.muted = true;
+    video.defaultMuted = true;
+    video.loop = true;
     if (poster) video.poster = poster;
     video.style.visibility = "hidden";
     var source = document.createElement("source");
@@ -50,6 +55,10 @@
       if (placeholder) placeholder.remove();
     });
     frame.appendChild(video);
+    if (!reduceMotion) {
+      var p = video.play();
+      if (p && p.catch) p.catch(function () { /* autoplay blocked: poster stays, controls still work */ });
+    }
   }
 
   /* ------------------------------------------------------------------
