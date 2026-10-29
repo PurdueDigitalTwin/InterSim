@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InterSim: Innovative Intersection Digital Twins for Human-in-the-Loop Driving Simulation</title>
+  <meta name="description" content="InterSim is a Unity-based human-in-the-loop driving simulator that builds digital twins of innovative intersections (DLT, RCI, RBI, DDI, RAB) so agencies can evaluate designs with human and automated drivers before construction.">
+  <meta name="author" content="Luyang Jiang, Chuheng Wei, Yaguang Li, Shaoqi Wang, Yupeng Zhou, Hyunsoo Yun, Xishun Liao, Brandon Pitts, Ziran Wang">
+
+  <!-- Social preview. og:image must be an absolute URL; update if the page is not served from /InterSim/. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="InterSim: Innovative Intersection Digital Twins for Human-in-the-Loop Driving Simulation">
+  <meta property="og:description" content="A human-in-the-loop driving simulator that builds digital twins of innovative intersections for pre-construction evaluation.">
+  <meta property="og:url" content="https://purduedigitaltwin.github.io/InterSim/">
+  <meta property="og:image" content="https://purduedigitaltwin.github.io/InterSim/static/images/og_image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="static/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+<!-- ============================== Top bar ============================== -->
+<nav class="topbar" aria-label="Site">
+  <div class="topbar-inner">
+    <a class="wordmark" href="#top">InterSim</a>
+    <a class="lab-link" href="https://purduedigitaltwin.github.io/">Purdue Digital Twin Lab <span aria-hidden="true">&#8599;</span></a>
+  </div>
+</nav>
+
+<!-- ============================== Hero ============================== -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1>
+      <span class="title-line accent">InterSim:</span>
+      <span class="title-line"><span class="nowrap">Innovative Intersection</span> Digital Twins for</span>
+      <span class="title-line"><span class="nowrap">Human-in-the-Loop</span> Driving Simulation</span>
+    </h1>
+
+    <p class="authors">
+      <a href="https://scholar.google.com/citations?user=BoIYggoAAAAJ&amp;hl=en">Luyang Jiang</a><sup>1</sup>,
+      <a href="https://chuhengwei.com/">Chuheng Wei</a><sup>1</sup>,
+      <span>Yaguang Li</span><sup>1</sup>,
+      <span>Shaoqi Wang</span><sup>1</sup>,
+      <a href="https://scholar.google.com/citations?user=E2QyHRoAAAAJ&amp;hl=en">Yupeng Zhou</a><sup>1</sup>,
+      <a href="https://hyunsooyun.github.io/">Hyunsoo Yun</a><sup>1</sup>,
+      <a href="https://xishunliao.github.io/">Xishun Liao</a><sup>2</sup>,
+      <a href="https://scholar.google.com/citations?user=TQzI3dMAAAAJ&amp;hl=en">Brandon Pitts</a><sup>1</sup>,
+      <a href="https://ziranw.github.io/">Ziran Wang</a><sup>1,&#9993;</sup>
+    </p>
+    <p class="affils">
+      <span><sup>1</sup>College of Engineering, Purdue University</span>
+      <span><sup>2</sup>College of Engineering, University of Central Florida</span>
+      <span class="corr"><sup>&#9993;</sup>Corresponding author: <a href="mailto:ziran@ieee.org">ziran@ieee.org</a></span>
+    </p>
+
+    <!-- Replace href="#" and remove the is-soon class when each link is live. -->
+    <div class="buttons">
+      <a class="btn is-soon" href="#" aria-disabled="true" title="Available soon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l6 6v14H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Paper<span class="soon">soon</span></a>
+      <a class="btn is-soon" href="#" aria-disabled="true" title="Released upon acceptance">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+        Code<span class="soon">soon</span></a>
+      <a class="btn" href="#video">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg>
+        Video</a>
+      <a class="btn" href="#citation">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h4v4H8c0 2 1 3 3 3v2c-3 0-5-2-5-5V7zm7 0h4v4h-3c0 2 1 3 3 3v2c-3 0-5-2-5-5V7z" fill="currentColor"/></svg>
+        BibTeX</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================== Demo video ============================== -->
+<section id="video" class="teaser">
+  <div class="wrap wide">
+    <!-- Set the video source in static/js/main.js (DEMO_VIDEO): a YouTube ID or a local MP4 in static/videos/. -->
+    <div class="video-frame" id="demo-video" data-poster="static/images/realsim/rbi_sim.webp">
+      <div class="video-placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.55)"/><path d="M10 8l6 4-6 4z" fill="#fff"/></svg>
+        <p>Demo video coming soon</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== Overview ============================== -->
+<section id="overview" class="section">
+  <div class="wrap narrow">
+    <h2>Abstract</h2>
+    <p class="abstract">
+      Innovative intersection designs can improve roadway safety and operational efficiency, but their uncommon geometries may create
+      challenges for driver comprehension during early deployment. Evaluating these designs through full-scale field implementation can
+      also be costly. This paper presents <em>InterSim</em>, a Unity game engine-based human-in-the-loop (HITL) driving simulator that
+      constructs digital twins of site-specific innovative intersections in a virtual environment. <em>InterSim</em> links the real world
+      and the simulation world through two closed cycles: a digital twin cycle that builds each intersection twin from agency design and
+      traffic data and returns evidence from simulation to the agency, and an HITL cycle in which human drivers or automated driving
+      algorithms operate the ego vehicle under identical scenario conditions. The research capabilities of <em>InterSim</em> are
+      demonstrated through two case studies: a surrogate safety study compares post-encroachment time distributions between a Reduced
+      Conflict Intersection and a conventional intersection under different traffic volumes; an eco-driving study compares human drivers
+      with a rule-based agent using vehicle-to-infrastructure information and reveals differences in emission and driving behavior. These
+      studies demonstrate that <em>InterSim</em> provides a reusable digital twin platform for investigating innovative intersection
+      designs from diverse perspectives.
+    </p>
+  </div>
+
+  <div class="wrap">
+    <h3 class="subhead">Why InterSim?</h3>
+    <div class="cards three reasons">
+      <article class="card">
+        <svg class="reason-icon" viewBox="0 0 48 48" aria-hidden="true">
+          <circle class="ri-bg" cx="24" cy="24" r="24"/>
+          <circle class="ri-line" cx="20" cy="20" r="6"/>
+          <path class="ri-line" d="M9 38v-1.5C9 31 13.9 28 20 28s11 3 11 8.5V38"/>
+          <path class="ri-accent" d="M31.5 12.5a4.2 4.2 0 1 1 6.2 3.7c-1.5.8-2 1.7-2 3.3"/>
+          <circle class="ri-dot" cx="35.7" cy="24" r="1.5"/>
+        </svg>
+        <p class="card-kicker">The design</p>
+        <h4>Innovative intersections use paths that first-time drivers find confusing</h4>
+      </article>
+      <article class="card">
+        <svg class="reason-icon" viewBox="0 0 48 48" aria-hidden="true">
+          <circle class="ri-bg" cx="24" cy="24" r="24"/>
+          <path class="ri-line" d="M24 16.5c-1.2-1.5-3.1-2.3-5.3-2.3-3.2 0-5.4 1.7-5.4 4.2 0 6 11.4 3.4 11.4 9.4 0 2.6-2.4 4.3-5.8 4.3-2.6 0-4.8-1-6-2.6"/>
+          <path class="ri-line" d="M18.8 10.5v26"/>
+          <path class="ri-accent" d="M33 34V14m-5 5l5-5 5 5"/>
+        </svg>
+        <p class="card-kicker">The cost</p>
+        <h4>Testing a layout in the field is costly and puts road users at risk</h4>
+      </article>
+      <article class="card">
+        <svg class="reason-icon" viewBox="0 0 48 48" aria-hidden="true">
+          <circle class="ri-bg" cx="24" cy="24" r="24"/>
+          <circle class="ri-line" cx="24" cy="12.5" r="5"/>
+          <path class="ri-line" d="M12.5 27c.9-5 5.4-8 11.5-8s10.6 3 11.5 8"/>
+          <circle class="ri-accent" cx="24" cy="31" r="9.5"/>
+          <circle class="ri-accent" cx="24" cy="31" r="2.4"/>
+          <path class="ri-accent" d="M14.5 31h7.1m4.8 0h7.1M24 33.4v7.1"/>
+        </svg>
+        <p class="card-kicker">The gap</p>
+        <h4>Traffic and driving simulators leave out how humans drive a new design</h4>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== Architecture (scroll walkthrough) ============================== -->
+<section id="architecture" class="section arch-section">
+  <div class="wrap">
+    <h2>System Architecture</h2>
+    <p class="section-intro narrow">
+      <em>InterSim</em> couples the real world, where agencies hold the design data and drivers operate vehicles, with a simulation world
+      that keeps a digital twin of each intersection. Two closed cycles connect them.
+    </p>
+  </div>
+
+  <!-- main.js adds .is-enabled and sets data-step (0 full, 1 digital twin cycle, 2 HITL cycle, 3 full) while scrolling. -->
+  <div class="scrolly" id="arch-scrolly" data-step="0">
+    <div class="scrolly-sticky">
+      <div class="wrap wide">
+        <div class="arch-stage" id="arch-stage">
+          <figure class="arch-figure" id="arch-figure">
+            <img src="static/images/architecture.webp" width="2400" height="1302"
+                 alt="InterSim architecture. Real world: engineering documents, HD maps, traffic data, infrastructure owner-operators, human and automated drivers. Simulation world: five intersection digital twins (DLT, RCI, RBI, DDI, RAB), traffic generation module, analysis module, and ego vehicle platform.">
+            <div class="arch-ov ov-dt" aria-hidden="true"></div>
+            <div class="arch-ov ov-hitl" aria-hidden="true"></div>
+          </figure>
+
+          <aside class="arch-note note-dt" aria-label="Digital twin cycle">
+            <p class="note-kicker"><span class="swatch"></span>Digital twin cycle</p>
+            <ol class="note-steps">
+              <li><b>Data from IOOs</b>Engineering documents, HD maps, and traffic data</li>
+              <li><b>Rebuilt in Unity</b>The intersection twin, with traffic generated on its routes and signals</li>
+              <li><b>Analysis</b>Surrogate safety, driver behavior, traffic performance, emissions</li>
+              <li><b>Back to IOOs</b>Results guide a revised design, which is tested again</li>
+            </ol>
+          </aside>
+
+          <aside class="arch-note note-hitl" aria-label="Human-in-the-loop cycle">
+            <p class="note-kicker"><span class="swatch"></span>Human-in-the-loop cycle</p>
+            <ol class="note-steps">
+              <li><b>Driver</b>A human with wheel and pedals, keyboard, or gamepad, or an automated agent</li>
+              <li><b>Ego vehicle</b>Tunable vehicle dynamics, sensors, and V2X</li>
+              <li><b>Feedback</b>Visual and steering feedback in real time</li>
+              <li><b>Logging</b>Vehicle states and driver inputs go to the analysis module</li>
+            </ol>
+          </aside>
+        </div>
+        <p class="arch-hint" aria-hidden="true">Scroll to walk through the two cycles <span>&darr;</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== Digital twins ============================== -->
+<section id="twins" class="section alt">
+  <div class="wrap">
+    <h2>Intersection Digital Twins</h2>
+    <p class="section-intro narrow">
+      Each twin is modeled from agency road-plan documents and aerial imagery. It keeps the real site's road geometry, pavement markings,
+      traffic signs, and signals, so a driver sees the same visual guidance and maneuvers as at the real intersection.
+      <em>InterSim</em> currently includes five innovative intersection twins.
+    </p>
+
+    <div class="twin-viewer" id="twin-viewer">
+      <div class="twin-stage">
+        <!-- Looping orbit videos (static/videos/twins/<key>.mp4); main.js loads the selected one when the section comes into view. -->
+        <video id="twin-video" muted loop playsinline preload="none"
+               poster="static/images/twins/dlt_poster.webp"
+               aria-label="Orbit view of the Displaced Left Turn digital twin"></video>
+      </div>
+      <div class="twin-info" aria-live="polite">
+        <p class="twin-code" id="twin-code">DLT</p>
+        <h3 id="twin-name">Displaced Left Turn</h3>
+        <p id="twin-desc">Left-turning traffic crosses the opposing lanes upstream of the main intersection, so left turns can run at the same time as opposing through traffic.</p>
+      </div>
+      <div class="twin-strip" role="tablist" aria-label="Choose an intersection twin">
+        <button role="tab" class="twin-thumb is-active" aria-selected="true" data-twin="dlt"><img src="static/images/twins/dlt.webp" alt=""><span>DLT</span></button>
+        <button role="tab" class="twin-thumb" aria-selected="false" data-twin="rci"><img src="static/images/twins/rci.webp" alt=""><span>RCI</span></button>
+        <button role="tab" class="twin-thumb" aria-selected="false" data-twin="rbi"><img src="static/images/twins/rbi.webp" alt=""><span>RBI</span></button>
+        <button role="tab" class="twin-thumb" aria-selected="false" data-twin="ddi"><img src="static/images/twins/ddi.webp" alt=""><span>DDI</span></button>
+        <button role="tab" class="twin-thumb" aria-selected="false" data-twin="rab"><img src="static/images/twins/rab.webp" alt=""><span>RAB</span></button>
+      </div>
+    </div>
+
+    <h3 class="subhead">Real world vs. <em>InterSim</em></h3>
+    <p class="hint">Drag the handle to compare the aerial image of the real site with the digital twin.</p>
+    <div class="seg" role="tablist" aria-label="Choose a site">
+      <button role="tab" class="seg-btn is-active" aria-selected="true" data-site="rbi">Roundabout Interchange</button>
+      <button role="tab" class="seg-btn" aria-selected="false" data-site="rci">Reduced Conflict Intersection</button>
+    </div>
+    <div class="compare" id="compare">
+      <img class="compare-img compare-after" id="compare-sim" src="static/images/realsim/rbi_sim.webp" alt="Roundabout Interchange in InterSim">
+      <div class="compare-before" id="compare-before">
+        <img class="compare-img" id="compare-real" src="static/images/realsim/rbi_real.webp" alt="Roundabout Interchange, aerial image of the real site">
+      </div>
+      <span class="compare-label left">Real</span>
+      <span class="compare-label right"><em>InterSim</em></span>
+      <div class="compare-handle" id="compare-handle" aria-hidden="true">
+        <i class="ripple"></i><i class="ripple r2"></i><span class="knob"></span>
+      </div>
+      <input class="compare-range" id="compare-range" type="range" min="0" max="100" value="50" aria-label="Comparison position">
+    </div>
+
+    <h3 class="subhead">From the driver's seat</h3>
+    <figure class="driver-view">
+      <img src="static/images/teaser_incabin.webp" width="2000" height="1115" loading="lazy"
+           alt="In-cabin view of a human driver waiting at a signal in the InterSim DLT digital twin">
+      <figcaption>A human driver waits at the signal of the Displaced Left Turn twin, driving with a steering wheel and pedals.</figcaption>
+    </figure>
+
+    <h3 class="subhead">Vehicles</h3>
+    <p class="section-intro narrow">
+      Ego-vehicle physics expose engine characteristics, gear ratios, suspension, and tire friction, so they can be tuned to match a
+      production vehicle. <em>InterSim</em> currently includes four types of vehicles.
+    </p>
+    <!-- Looping showcase videos (static/videos/vehicles/); main.js loads each one when it comes into view. -->
+    <div class="vehicle-grid">
+      <figure class="vehicle">
+        <div class="vehicle-media">
+          <video class="loop-video" muted loop playsinline preload="none" poster="static/images/vehicles/honda_crv_poster.webp"
+                 data-src="static/videos/vehicles/honda_crv.mp4" aria-label="Honda CR-V in InterSim"></video>
+        </div>
+        <figcaption><b>Honda CR-V</b><span>SUV</span></figcaption>
+      </figure>
+      <figure class="vehicle">
+        <div class="vehicle-media">
+          <video class="loop-video" muted loop playsinline preload="none" poster="static/images/vehicles/lexus_rc_poster.webp"
+                 data-src="static/videos/vehicles/lexus_rc.mp4" aria-label="Lexus RC in InterSim"></video>
+        </div>
+        <figcaption><b>Lexus RC</b><span>Coupe</span></figcaption>
+      </figure>
+      <figure class="vehicle">
+        <div class="vehicle-media">
+          <video class="loop-video" muted loop playsinline preload="none" poster="static/images/vehicles/ram_1500_poster.webp"
+                 data-src="static/videos/vehicles/ram_1500.mp4" aria-label="RAM 1500 in InterSim"></video>
+        </div>
+        <figcaption><b>RAM 1500</b><span>Pickup truck</span></figcaption>
+      </figure>
+      <figure class="vehicle">
+        <div class="vehicle-media">
+          <video class="loop-video" muted loop playsinline preload="none" poster="static/images/vehicles/toyota_camry_poster.webp"
+                 data-src="static/videos/vehicles/toyota_camry.mp4" aria-label="Toyota Camry in InterSim"></video>
+        </div>
+        <figcaption><b>Toyota Camry</b><span>Sedan</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Case studies were moved to _drafts/case-studies.html for now. -->
+
+<!-- ============================== Citation ============================== -->
+<section id="citation" class="section">
+  <div class="wrap narrow">
+    <h2>Citation</h2>
+    <!-- Replace with the arXiv entry once posted (e.g. add eprint, archivePrefix = {arXiv}, primaryClass). -->
+    <div class="bibtex">
+      <button class="copy-btn" id="copy-bibtex" type="button">Copy</button>
+<pre id="bibtex-text"><code>@misc{jiang2026intersim,
+  title  = {InterSim: Innovative Intersection Digital Twins for
+            Human-in-the-Loop Driving Simulation},
+  author = {Jiang, Luyang and Wei, Chuheng and Li, Yaguang and
+            Wang, Shaoqi and Zhou, Yupeng and Yun, Hyunsoo and
+            Liao, Xishun and Pitts, Brandon and Wang, Ziran},
+  year   = {2026}
+}</code></pre>
+    </div>
+
+    <h3 class="subhead">Acknowledgement</h3>
+    <p>This work was supported by the Indiana Department of Transportation (INDOT) Joint Transportation Research Program (JTRP) under
+      Grant JTRP-4932.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>&copy; 2026 <a href="https://purduedigitaltwin.github.io/">Purdue Digital Twin Lab</a>, Purdue University.</p>
+  </div>
+</footer>
+
+<script src="static/js/main.js"></script>
+</body>
+</html>
