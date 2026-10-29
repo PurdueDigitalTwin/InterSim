@@ -10,7 +10,7 @@
    * ------------------------------------------------------------------ */
   var DEMO_VIDEO = {
     youtubeId: "",
-    mp4: ""
+    mp4: "static/videos/intersim_demo.mp4"
   };
 
 
