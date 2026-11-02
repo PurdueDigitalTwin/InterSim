@@ -250,26 +250,70 @@
     var sticky = sc.querySelector(".scrolly-sticky");
     var hint = sc.querySelector(".arch-hint");
     var topbar = document.querySelector(".topbar");
-    var NOTE_W = 330, GAP = 28, ASPECT = 2400 / 1302;   // architecture.webp is 2400 x 1302
+    var NOTE_MIN = 260, NOTE_MAX = 340, GAP = 28, ASPECT = 2400 / 1302;   // architecture.webp is 2400 x 1302
     var STEPS = [0.15, 0.5, 0.85];   // scroll-progress boundaries between steps
     var SCROLL_PER_STEP = 0.6;       // viewport heights of scrolling for the walkthrough, per step
     var current = -1, ticking = false, jumping = false, jumpTimer = null;
-    var navH = 60, stickyTop = 60;
+    var navH = 60, stickyTop = 60, enabled = false;
+    var notes = sc.querySelectorAll(".arch-note");
+    var wideMQ = window.matchMedia("(min-width: 901px)");
 
-    sc.classList.add("is-enabled");
+    function noteHeight() {
+      var h = 0;
+      notes.forEach(function (n) { h = Math.max(h, n.offsetHeight); });
+      return h;
+    }
+
+    function setVar(name, px) { sc.style.setProperty(name, px.toFixed(1) + "px"); }
 
     function layout() {
+      sc.classList.add("is-enabled");            // measure in walkthrough mode
       navH = topbar ? topbar.offsetHeight : 0;
       var vh = window.innerHeight;
+      var room = vh - navH - 24;                  // height the pinned block may use
       var sw = stage.clientWidth;
-      var availH = vh - navH - (hint ? hint.offsetHeight + 12 : 0) - 40;
-      var fw = Math.max(320, Math.min(sw, availH * ASPECT));
-      var nw = Math.min(NOTE_W, sw * 0.32);
-      var k = Math.min(0.72, (sw - nw - GAP) / fw);
-      sc.style.setProperty("--fw", fw.toFixed(1) + "px");
-      sc.style.setProperty("--tx-full", ((sw - fw) / 2).toFixed(1) + "px");
-      sc.style.setProperty("--s-focus", k.toFixed(4));
-      sc.style.setProperty("--nw", nw.toFixed(1) + "px");
+      var hintH = hint ? hint.offsetHeight + 12 : 0;
+      var fits, fw;
+
+      if (wideMQ.matches) {
+        // Full step: the figure as large as the window allows.
+        fw = Math.min(sw, (room - hintH - 16) * ASPECT);
+        setVar("--fw", fw);
+        setVar("--tx-full", (sw - fw) / 2);
+        // Focus steps: shrink the figure only as much as the box needs, then center figure + box.
+        // If the box is too tall for the window, try a wider (and so shorter) box.
+        var base = Math.max(NOTE_MIN, Math.min(NOTE_MAX, sw * 0.3));
+        var widths = [base, Math.max(base, NOTE_MAX), Math.max(base, 420)];
+        fits = false;
+        for (var i = 0; i < widths.length && !fits; i++) {
+          var nw = widths[i];
+          var k = Math.min(1, (sw - nw - GAP) / fw);
+          var x0 = Math.max(0, (sw - (k * fw + GAP + nw)) / 2);
+          sc.style.setProperty("--s-focus", k.toFixed(4));
+          setVar("--tx-focus", x0);
+          setVar("--note-left", x0 + k * fw + GAP);
+          setVar("--nw", nw);
+          fits = noteHeight() <= room - hintH && fw >= 360 && k * fw >= sw * 0.45;
+        }
+      } else {
+        // Stacked: leave room for the box under the figure.
+        sc.style.removeProperty("--fw");
+        var nh = noteHeight();
+        fw = Math.min(sw, (room - hintH - nh - 14) * ASPECT);
+        setVar("--fw", Math.max(0, fw));
+        fits = fw >= Math.min(sw, 280);
+      }
+
+      enabled = fits;
+      if (!enabled) {
+        // Too little height (for example, zoomed in a lot): show the figure with both boxes instead.
+        sc.classList.remove("is-enabled");
+        sc.setAttribute("data-step", "0");
+        current = -1;
+        sc.style.height = "";
+        return;
+      }
+
       // Pin the block centered in the space below the top bar; the scrolly is only as tall as
       // the block plus the scroll distance, so there is no blank space before or after it.
       var h = sticky.offsetHeight;
@@ -280,7 +324,7 @@
 
     function update() {
       ticking = false;
-      if (jumping) return;
+      if (jumping || !enabled) return;
       var r = sc.getBoundingClientRect();
       var total = sc.offsetHeight - sticky.offsetHeight;
       var p = total > 0 ? Math.min(1, Math.max(0, (stickyTop - r.top) / total)) : 0;

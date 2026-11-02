@@ -200,9 +200,18 @@ figcaption { margin-top: 10px; color: var(--muted); font-size: 14.5px; line-heig
 .scrolly.is-enabled .scrolly-sticky { position: sticky; top: var(--sticky-top, 63px); }
 .scrolly .wrap.wide { max-width: 1360px; }
 .scrolly.no-anim .arch-figure, .scrolly.no-anim .arch-note, .scrolly.no-anim .arch-ov, .scrolly.no-anim .arch-hint { transition: none !important; }
-.scrolly:not(.is-enabled) .arch-note { display: none; }
 .scrolly:not(.is-enabled) .arch-hint { display: none; }
 
+/* Static fallback (no JS, or a viewport too short for the walkthrough, e.g. when zoomed in):
+   full figure with both cycle boxes below it. */
+.scrolly:not(.is-enabled) .arch-stage { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.scrolly:not(.is-enabled) .arch-figure { grid-column: 1 / -1; }
+.scrolly:not(.is-enabled) .arch-note { opacity: 1; pointer-events: auto; transform: none; }
+@media (max-width: 720px) { .scrolly:not(.is-enabled) .arch-stage { grid-template-columns: 1fr; } }
+
+/* Side-by-side walkthrough. main.js sizes the figure (--fw) to the window and places the scaled
+   figure and its box as one centered group (--tx-focus, --s-focus, --note-left), so the gap
+   between them stays the same at any zoom level. */
 @media (min-width: 901px) {
   .scrolly.is-enabled .arch-figure {
     width: var(--fw, 100%); margin: 0;
@@ -210,15 +219,18 @@ figcaption { margin-top: 10px; color: var(--muted); font-size: 14.5px; line-heig
     transition: transform .7s cubic-bezier(.2, .7, .2, 1);
   }
   .scrolly.is-enabled .arch-note {
-    position: absolute; top: 50%; right: 0; width: var(--nw, 330px);
+    position: absolute; top: 50%; left: var(--note-left, auto); width: var(--nw, 330px);
     transform: translate(18px, -50%);
   }
-  .scrolly[data-step="1"] .arch-figure, .scrolly[data-step="2"] .arch-figure { transform: translateX(0) scale(var(--s-focus, .7)); }
+  .scrolly[data-step="1"] .arch-figure, .scrolly[data-step="2"] .arch-figure {
+    transform: translateX(var(--tx-focus, 0px)) scale(var(--s-focus, .7));
+  }
   .scrolly[data-step="1"] .note-dt, .scrolly[data-step="2"] .note-hitl { transform: translate(0, -50%); }
 }
+/* Stacked walkthrough on narrow windows: figure on top, the box below it. */
 @media (max-width: 900px) {
   .scrolly.is-enabled .arch-stage { display: grid; gap: 14px; }
-  .scrolly.is-enabled .arch-figure { grid-area: 1 / 1; }
+  .scrolly.is-enabled .arch-figure { grid-area: 1 / 1; width: var(--fw, 100%); justify-self: center; }
   .scrolly.is-enabled .arch-note { grid-area: 2 / 1; transform: translateY(10px); }
   .scrolly[data-step="1"] .note-dt, .scrolly[data-step="2"] .note-hitl { transform: none; }
 }
