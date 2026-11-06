@@ -464,7 +464,8 @@ figure img { border-radius: 10px; }
 /* ---------- citation ---------- */
 .bibtex { position: relative; }
 .bibtex pre {
-  margin: 0; padding: 20px 22px; overflow-x: auto; border-radius: var(--radius);
+  margin: 0; padding: 20px 96px 20px 22px; overflow-x: auto; border-radius: var(--radius);
+  white-space: pre-wrap; overflow-wrap: anywhere;   /* wrap long fields instead of cutting them off */
   background: #1b1f24; color: #e9eaee; font: 13.5px/1.6 var(--mono);
 }
 .copy-btn {
@@ -496,6 +497,7 @@ figure img { border-radius: 10px; }
   .authors { font-size: 16px; }
   .affils { font-size: 14px; flex-direction: column; }
   .contact { font-size: 14px; }
+  .bibtex pre { padding: 54px 18px 18px; }   /* Copy button sits above the text on phones */
   .section { padding: 52px 0; }
   .cards.two { grid-template-columns: 1fr; }
   .vehicle-grid { gap: 10px; }
